@@ -1,0 +1,31 @@
+<h3 *ngIf="araclar; else noCar">{{title}}</h3>
+
+<div class="mb-3">
+  <input class="form-control" id="carName" placeholder="Kiralık Araç Arama" [(ngModel)]="filterText">
+
+  <!--  İnput'u filterText'e bağlamak için 
+      Banana Notation [(ngModel)] yaparak model oluşturmamız gerekir.
+      Burada İnput'u filterText'e bağlıyoruz. 
+      Bu yönteme two way binding denir. 
+      Component sayfayı sayfa Componenti etkiler.
+      ngModel'i kullanabilmek için FormsModule'ü import etmek gerekmektedir. -->
+
+  <div *ngIf="filterText" class="form-text"><strong> Şuan {{filterText}} aradınız.</strong></div>
+</div>
+
+<ng-template #noCar>
+  <div class="alert alert-primary" role="alert">
+    İstediğiniz araç bulunamadı.
+  </div>
+</ng-template>
+
+<div *ngFor="let arac of araclar | carFilter :filterText" class="card" style="width: 18rem;">
+  <img [src]="arac.kapakResim" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{arac.model}} {{arac.gunlukKiralamaUcreti | currency:'USD' : 'symbol':"1.2-2"}}</h5>
+    <p class="card-text"> {{arac.modelYili}} model {{arac.marka}} {{arac.model}} aracımız {{arac.kisiSayisi}} kişilik
+      {{arac.kapiSayisi}} kapılıdır.</p>
+    <a (click)="addToCart(arac)" class="btn btn-primary">Aracı Kirala</a>
+    <!--     Event binding'de event'in adını yazıp bunu hangi olaya bağlamak istiyorsak adını yazıyoruz. -->
+  </div>
+</div>
