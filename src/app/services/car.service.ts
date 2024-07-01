@@ -44,8 +44,12 @@ export class CarService {
     return throwError(errMessage);
   }
 
-  getCarsById(Id: number): Observable<Arac> {
-    return this.httpClient.get<Arac>(`${this.apiUrl}/${Id}`)
+  getCarsById(id: number): Observable<Arac> {
+    return this.httpClient.get<Arac>(`${this.apiUrl}/${id}`)
+  }
+  
+  getCarsByMarka(marka: string): Observable<Arac[]> {
+    return this.httpClient.get<Arac[]>(`${this.apiUrl}/${marka}`)
   }
 
   putCars(arac: Arac): Observable<any> {
@@ -54,7 +58,7 @@ export class CarService {
 
   deleteCars(Id: number): Observable<any> {
     return this.httpClient.delete<any>(`${this.apiUrl}/${Id}`);
-  }
+  } //İd'ye göre tablo oluşturmadık. o yüzden araçlar 1'den fazla ise aracı markaya göre çağırmamız daha iyi olacak.
 
   postCars(arac: Arac): Observable<any> {
     return this.httpClient.post<any>(`${this.apiUrl}`, arac);

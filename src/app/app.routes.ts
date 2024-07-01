@@ -23,6 +23,11 @@ export const routes: Routes = [
         pathMatch: 'full',
         redirectTo: 'home'
     },
+    
+    {
+        path: 'login',
+        component: LoginComponent
+    },
 
     {
         path: 'home',
@@ -36,9 +41,13 @@ export const routes: Routes = [
             },
 
             {
-                path: 'araclar/:aracId',
+                path: 'araclar/:aracMarka',
                 component: CarDetailsComponent
             },
+            {
+                path: 'sepet',
+                loadChildren: () => import('./modules/cart/cart.module').then(t => t.CartModule)
+              },
 
         ]
     },

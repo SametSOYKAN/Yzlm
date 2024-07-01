@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "./modules/shared/shared.module";
 import { CarDetailsComponent } from "./components/car-details/car-details.component";
 import { CarFilterPipe } from "./components/car-details/car-filter.pipe";
+import { CartSummaryComponent } from "./components/cart-summary/cart-summary.component";
+
 
 
 @NgModule({
@@ -24,8 +26,7 @@ import { CarFilterPipe } from "./components/car-details/car-filter.pipe";
         HomeComponent,
         LoginComponent,
         NotFoundComponent,
-        CarFilterPipe
-        
+        CarFilterPipe,
     ],
 
     imports:[
@@ -35,9 +36,11 @@ import { CarFilterPipe } from "./components/car-details/car-filter.pipe";
         AppRoutes,
         FormsModule,
         ReactiveFormsModule,
-        SharedModule
+        SharedModule,
+        
            
     ],
+   
 
     providers:[],
 

@@ -1,5 +1,9 @@
 <h3 *ngIf="araclar; else noCar">{{title}}</h3>
 
+<div *ngIf="araclar.length==0" class="alert alert-info">
+  Aradığınız kriterlere uygun ürün bulunamadı.
+</div>
+
 <div class="mb-3">
   <input class="form-control" id="carName" placeholder="Kiralık Araç Arama" [(ngModel)]="filterText">
 

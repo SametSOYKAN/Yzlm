@@ -2,7 +2,7 @@ import { Photo } from "./photo";
 import { Rezervasyon } from "./rezervasyon";
 
 export interface Arac {
-    Id: number;
+    id: number;
     aracId: number;
     marka?: string;
     model?: string;
